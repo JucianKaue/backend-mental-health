@@ -14,9 +14,14 @@ datasource db {
 }
 
 model User {
-  id        String @id @default(uuid())
-  email     String @unique
-  password  String
+  id              String @id @default(uuid())
+  name            String?
+  email           String @unique
+  password        String
+  profile_picture String?
+  created_at      DateTime @default(now())
+  updated_at      DateTime? @updatedAt
+  deleted_at      DateTime?
 
   places Place[]
 

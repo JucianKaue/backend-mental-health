@@ -52,5 +52,5 @@ Content-Type: application/json
 
 ### Delete place
 # @name createPlace
-DELETE  http://localhost:3000/emotional-regulation-techniques/fa6719e2-c37f-4e39-994e-33fc0205ea73
+DELETE  http://localhost:3000/emotional-regulation-techniques/af80a1ac-8450-4aff-a755-0b3e5d50c52c
 Authorization: Bearer {{authToken}}

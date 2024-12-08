@@ -1,0 +1,50 @@
+@authToken = {{authenticate.response.body.access_token}}
+
+### Autheticate user
+# @name authenticate
+POST http://localhost:3000/auth
+Content-Type: application/json
+
+{
+    "email": "juciaceza4re@gmail.com",
+    "password": "jucian123"
+}
+
+### Create plan
+# @name createPlace
+POST http://localhost:3000/plans
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "name": "Basic",
+    "price": 29.90
+}
+
+### Get place
+# @name createPlace
+GET  http://localhost:3000/plans/193d1866-c8ff-4488-9d16-4fd9e1daf80b
+Authorization: Bearer {{authToken}}
+
+
+### Get all places
+# @name createPlace
+GET  http://localhost:3000/plans
+Authorization: Bearer {{authToken}}
+
+
+### Edit place
+# @name createPlace
+PATCH http://localhost:3000/plans/e2789c6a-a106-4a2c-be6e-57863a13ba99
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "name": "Plano caro pra carai",
+    "price": 5000.3
+}
+
+### Delete place
+# @name createPlace
+DELETE  http://localhost:3000/plans/e2789c6a-a106-4a2c-be6e-57863a13ba99
+Authorization: Bearer {{authToken}}

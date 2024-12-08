@@ -5,6 +5,7 @@ import { envSchema } from './env';
 import { AuthModule } from './auth/auth.module';
 import { PlaceModule } from './place/place.module';
 import { EmotionalRegulationTechniquesModule } from './emotional-regulation-techniques/emotional-regulation-techniques.module';
+import { PlansModule } from './plans/plans.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { EmotionalRegulationTechniquesModule } from './emotional-regulation-tech
     }),
     AuthModule,
     PlaceModule,
-    EmotionalRegulationTechniquesModule
+    EmotionalRegulationTechniquesModule,
+    PlansModule,
   ],
   providers: [PrismaService],
 })

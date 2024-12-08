@@ -1,0 +1,56 @@
+@authToken = {{authenticate.response.body.access_token}}
+
+### Autheticate user
+# @name authenticate
+POST http://localhost:3000/auth
+Content-Type: application/json
+
+{
+    "email": "juciaceza4re@gmail.com",
+    "password": "jucian123"
+}
+
+### Create emotional regulation technique
+# @name createPlace
+POST http://localhost:3000/emotional-regulation-techniques
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "name": "Meditação de 5 minutos",
+    "description": "Meditação rápida",
+    "category": "Meditação Guiada",
+    "video_url": "https://youtube.com/oi"
+}
+
+### Get place
+# @name createPlace
+GET  http://localhost:3000/emotional-regulation-techniques/7cc8b81c-f09a-4168-a768-726d0a1f5077
+Authorization: Bearer {{authToken}}
+
+
+### Get all places
+# @name createPlace
+GET  http://localhost:3000/emotional-regulation-techniques
+Authorization: Bearer {{authToken}}
+
+### List places by name
+# @name createPlace
+GET  http://localhost:3000/emotional-regulation-techniques
+Authorization: Bearer {{authToken}}
+
+
+### Edit place
+# @name createPlace
+PATCH http://localhost:3000/emotional-regulation-techniques/7cc8b81c-f09a-4168-a768-726d0a1f5077
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "name": "Praça grandona",
+}
+
+### Delete place
+# @name createPlace
+DELETE  http://localhost:3000/emotional-regulation-techniques/fa6719e2-c37f-4e39-994e-33fc0205ea73
+Authorization: Bearer {{authToken}}

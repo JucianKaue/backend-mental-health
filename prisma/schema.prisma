@@ -53,7 +53,7 @@ model EmotionalRegulationTechnique {
   video_url   String
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime? @updatedAt @map("updated_at")
-  deletedAt   DateTime @map("deleted_at")
+  deletedAt   DateTime? @map("deleted_at")
 
   created_by String @map("created_by")
   user User @relation(fields: [created_by], references: [id])
@@ -67,7 +67,7 @@ model Plans {
   price       BigInt
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime? @updatedAt @map("updated_at")
-  deletedAt   DateTime @map("deleted_at")
+  deletedAt   DateTime? @map("deleted_at")
 
   UserPlans UserPlans[]
 

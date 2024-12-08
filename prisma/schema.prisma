@@ -23,26 +23,11 @@ model User {
   updated_at      DateTime? @updatedAt
   deleted_at      DateTime?
 
-  places Place[]
   EmotionalRegulationTechnique EmotionalRegulationTechnique[]
   UserPlans UserPlans[]
   EmotionalRegulationHistory EmotionalRegulationHistory[]
 
   @@map("users")
-}
-
-model Place {
-  id String @id @default(uuid()) 
-  name String
-  city String
-  state String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime? @updatedAt @map("updated_at")
-
-  authorId String @map("author_id")
-  author User @relation(fields: [authorId], references: [id])
-
-  @@map("places")
 }
 
 model EmotionalRegulationTechnique {

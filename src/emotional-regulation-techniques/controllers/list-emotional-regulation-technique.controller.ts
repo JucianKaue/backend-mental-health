@@ -32,8 +32,6 @@ export class ListEmotionalRegulationTechniqueController {
         const user = request.user as TokenPayload
 
         let emotionalRegulationTechnique: EmotionalRegulationTechnique[] | undefined
-        // If there is a query param "name", find rows that "name" constains the search.
-        // Else, get All places
         if (name) {
             emotionalRegulationTechnique = await this.prisma.emotionalRegulationTechnique.findMany({
                 where: {
@@ -51,7 +49,7 @@ export class ListEmotionalRegulationTechniqueController {
         }
         
         if (!emotionalRegulationTechnique) {
-            throw new NotFoundException('There is no places available')
+            throw new NotFoundException('There is no emotional Regulation Techniques available')
         }
 
         return {

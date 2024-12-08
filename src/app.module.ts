@@ -3,7 +3,6 @@ import { PrismaService } from './prisma/prisma.service';
 import { ConfigModule } from '@nestjs/config'
 import { envSchema } from './env';
 import { AuthModule } from './auth/auth.module';
-import { PlaceModule } from './place/place.module';
 import { EmotionalRegulationTechniquesModule } from './emotional-regulation-techniques/emotional-regulation-techniques.module';
 import { PlansModule } from './plans/plans.module';
 
@@ -14,7 +13,6 @@ import { PlansModule } from './plans/plans.module';
       isGlobal: true
     }),
     AuthModule,
-    PlaceModule,
     EmotionalRegulationTechniquesModule,
     PlansModule,
   ],

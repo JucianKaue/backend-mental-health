@@ -24,6 +24,9 @@ model User {
   deleted_at      DateTime?
 
   places Place[]
+  EmotionalRegulationTechnique EmotionalRegulationTechnique[]
+  UserPlans UserPlans[]
+  EmotionalRegulationHistory EmotionalRegulationHistory[]
 
   @@map("users")
 }
@@ -40,4 +43,73 @@ model Place {
   author User @relation(fields: [authorId], references: [id])
 
   @@map("places")
+}
+
+model EmotionalRegulationTechnique {
+  id          String @id @unique
+  name        String 
+  description String
+  category    String
+  video_url   String
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime? @updatedAt @map("updated_at")
+  deletedAt   DateTime @map("deleted_at")
+
+  created_by String @map("created_by")
+  user User @relation(fields: [created_by], references: [id])
+
+  @@map("emotional_regulation_techniques")
+}
+
+model Plans {
+  id          String @id @unique
+  name        String 
+  price       BigInt
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime? @updatedAt @map("updated_at")
+  deletedAt   DateTime @map("deleted_at")
+
+  UserPlans UserPlans[]
+
+  @@map("plans")
+  EmotionalRegulationHistory EmotionalRegulationHistory[]
+}
+
+model UserPlans {
+  id          String @id @unique
+  userId      String @map("user_id")
+  planId      String @map("plan_id")
+  status      String
+  startDate   DateTime  @map("start_date")
+  endDate     DateTime  @map("end_date")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime? @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+
+
+  plan Plans @relation(fields: [planId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("user_plans")
+}
+
+
+model EmotionalRegulationHistory {
+  id   String @id @unique
+  userId String @map("user_id")
+  emotionalRegulationTechniqueId String @map("emotional_regulation_technique_id")
+  emotionalState  String
+  desiredState    String
+  availableTime   Int
+  location        String 
+  rating          Int?
+  feedback        String?
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime? @updatedAt @map("updated_at")
+  deletedAt       DateTime? @map("deleted_at")
+
+  user User @relation(fields: [userId], references: [id])
+  emotionalRegulationTechnique Plans @relation(fields: [emotionalRegulationTechniqueId], references: [id])
+
+  @@map("emotional_regulation_history")
 }
